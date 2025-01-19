@@ -83,7 +83,7 @@ fun BizCardUI() {
 
 @Composable
 fun BizCardDetails() {
-    val portfolioVisible  = remember {
+    val skillsVisible  = remember {
         mutableStateOf(false)
     }
     Column(modifier = Modifier
@@ -104,48 +104,28 @@ fun BizCardDetails() {
         )
         Spacer(modifier = Modifier.height(10.dp))
         Button(modifier = Modifier.padding(5.dp).height(40.dp),onClick = {
-             portfolioVisible.value = !portfolioVisible.value        }) {
-        Text(text = if (portfolioVisible.value) "Hide Portfolio" else "Show Portfolio"
+             skillsVisible.value = !skillsVisible.value        }) {
+        Text(text = if (skillsVisible.value) "Hide SKills" else "Show Skills"
 
             ,style = TextStyle(fontSize = 15.sp),modifier = Modifier.align(Alignment.CenterVertically))
 
 
         }
         Spacer(modifier = Modifier.height(10.dp))
-     if (portfolioVisible.value){   PortfolioList(
+     if (skillsVisible.value){   SkillsList(
             portfolio = listOf(
                 "Android Development",
                 "Kotlin",
                 "Flutter",
                 "Firebase",
                 "Dart",
-                "Java",
                 "Python",
-                "C++",
-                "C#",
-                "HTML",
-                "CSS",
-                "JavaScript",
-                "React",
-                "Node.js",
-                "Express.js",
-                "MongoDB",
-                "SQL",
-                "PostgreSQL",
                 "Git",
                 "GitHub",
-                "Bitbucket",
-                "Jira",
                 "Trello",
                 "Slack",
-                "Figma",
-                "Adobe XD",
                 "Adobe Photoshop",
-                "Adobe Illustrator",
-                "Adobe Premiere Pro",
-                "Adobe After Effects",
                 "Microsoft Office",
-                "Google Workspace",
                 "Windows",
                 "Linux",
                 "MacOS",
@@ -153,25 +133,15 @@ fun BizCardDetails() {
                 "Visual Studio Code",
                 "IntelliJ IDEA",
                 "PyCharm",
-                "WebStorm",
-                "CLion",
-                "Rider",
-                "Xcode",
-                "Unity",
-                "Unreal Engine",
-                "Blender",
-                "Maya",
-                "3ds Max",
-                "Substance Painter",
-                "Substance Designer",
-                "ZBrush",
+
+
         ),
         ) }
     }
 }
 
 @Composable
-fun PortfolioList(portfolio: List<String>) {
+fun SkillsList(portfolio: List<String>) {
     LazyColumn() {
         items(portfolio.size) { index ->
             PortfolioItem(portfolio = portfolio[index])
@@ -187,7 +157,7 @@ fun PortfolioItem(portfolio: String){
             containerColor = Color.Transparent,
         ),
         supportingContent = {
-            Text(text = "A very cool project",style = TextStyle(fontSize = 15.sp))
+            Text(text = "A very cool skill",style = TextStyle(fontSize = 15.sp))
         },
      headlineContent = {
          Text(text = portfolio, style = TextStyle(fontSize = 15.sp))
